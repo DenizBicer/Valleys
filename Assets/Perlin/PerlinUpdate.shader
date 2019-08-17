@@ -9,14 +9,16 @@ Shader "Perlin/Update"
     CGINCLUDE
 
     #include "UnityCustomRenderTexture.cginc"
-    #include "ClassicNoise2D.cginc"
-
+    //#include "ClassicNoise2D.cginc"
+    #include "Simplex4D.cginc"
+    #define M_PI 3.1415926535897932384626433832795
     float _Factor, _Speed;
 
     half4 frag(v2f_customrendertexture i) : SV_Target
     {
-        float2 uv = i.globalTexcoord;
-        half value = cnoise(uv* _Factor+_Time.x * _Speed);
+        float2 uv = i.globalTexcoord * _Factor;
+         half t = _Time.x * _Speed;
+        half value = snoise(float4(uv.x, uv.y, cos(4.0 * M_PI *t), sin(4.0 * M_PI *t)));
 
         return half4(value, value, 0, 0);
     }
