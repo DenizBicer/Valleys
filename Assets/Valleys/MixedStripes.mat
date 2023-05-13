@@ -71,7 +71,7 @@ Material:
     - _Horizontal: 0
     - _Isoline: 1
     - _Metallic: 0
-    - _ModAmount: -0.04
+    - _ModAmount: -0.08
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
